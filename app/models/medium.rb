@@ -1,8 +1,9 @@
 class Medium < ActiveRecord::Base
-  attr_accessible :description, :title, :year, :prompts_attributes
+  attr_accessible :description, :title, :year, :prompts_attributes, :comments_attributes
   has_many :prompts
+  has_many :comments
 
   accepts_nested_attributes_for :prompts, :allow_destroy => true
-  opinio_subjectum
+  accepts_nested_attributes_for :comments, :allow_destroy => true
 
 end

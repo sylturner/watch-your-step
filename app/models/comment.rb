@@ -1,3 +1,5 @@
 class Comment < ActiveRecord::Base
-  belongs_to :media
+  attr_accessible :author, :comment, :medium_id
+  belongs_to :medium
+  validates_presence_of :author, :comment, :medium
 end

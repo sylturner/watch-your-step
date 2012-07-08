@@ -9,7 +9,7 @@
 
 <h2>Observations and Discussion</h2>
 <% for prompt in @medium.prompts %>
-  <h4><%= prompt.question %></h4>
+  <h3><%= prompt.question %></h3>
   <p><%= prompt.answer %></p>
 <% end %>
 
@@ -17,4 +17,15 @@
 
 <hr/>
 
-<%= comments_for @medium %>
+<h2>Comments</h2>
+<% if @medium.comments.empty? %>
+  <p>No comments yet...</p>
+<% else %>
+  <% @medium.comments.each do |comment| %>
+    <p><strong><%= comment.author %></strong> - <em><%= time_ago_in_words(comment.updated_at) %> ago</em><br/>
+    <%= comment.comment %></p>
+  <% end %>
+<% end %>
+<%= nested_form_for(@medium) do |f| %>
+  <p><%= f.link_to_add "Add comment", :comments %></p>
+<% end %>

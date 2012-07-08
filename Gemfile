@@ -22,7 +22,6 @@ end
 
 gem 'jquery-rails'
 gem "nested_form"
-gem "opinio", :git => "git://github.com/Draiken/opinio.git"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -34,7 +33,7 @@ gem "opinio", :git => "git://github.com/Draiken/opinio.git"
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

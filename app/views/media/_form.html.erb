@@ -24,10 +24,10 @@
     <%= f.text_area :description %>
   </div>
   <h2>Questions and discussion</h2>
-  <%= f.fields_for :prompts do |g| %>
-    <%= render :partial => "prompt", :locals => {:g => g} %>    
-  <% end %>
-  <p><%= f.link_to_add "Add prompt", :prompts %></p>
+  <%= f.fields_for :prompts %>
+  <p><%= f.link_to_add "Add question/answer", :prompts %></p>
+  
+  <%= render :partial => "shared/honeypot" %>
   <div class="actions">
     <%= f.submit %>
   </div>

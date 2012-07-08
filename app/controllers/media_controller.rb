@@ -1,4 +1,7 @@
 class MediaController < ApplicationController
+
+  before_filter :check_honeypot, :only => [:create, :edit, :update]
+
   # GET /media
   # GET /media.json
   def index
@@ -14,7 +17,7 @@ class MediaController < ApplicationController
   # GET /media/1.json
   def show
     @medium = Medium.find(params[:id])
-
+    @comment = Comment.new(:medium_id => params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @medium }
@@ -87,6 +90,15 @@ class MediaController < ApplicationController
     @medium.prompts.build
     respond_to do |format|
       format.js {render :layout => false }
+    end
+  end
+
+
+  def check_honeypot
+    # check that email param and don't submit anything if it's populated
+    # used to catch spambots
+    if !params[:email].blank?
+      render :action => "new"
     end
   end
 

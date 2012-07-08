@@ -1,11 +1,8 @@
 WatchYourStep::Application.routes.draw do
-  
-
-  opinio_model
 
   resources :media, :controller => "media" do 
-    opinio
     resources :prompts
+    resources :comments
   end
 
   root :to => 'home#index'
