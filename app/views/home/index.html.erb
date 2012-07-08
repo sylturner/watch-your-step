@@ -1,0 +1,11 @@
+<h1>Watch Your Step</h1>
+
++ <%= link_to 'Add New Medium', new_medium_path %>
+
+<h2>Recently updated media</h2>
+
+<ul>
+	<% @media.each do |medium| %>
+		<li><%= link_to medium.title, medium %></li>
+	<% end %>
+</ul>

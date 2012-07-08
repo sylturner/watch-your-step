@@ -1,0 +1,12 @@
+<h1>Listing all media</h1>
+
++ <%= link_to 'Add New Medium', new_medium_path %>
+<p>Sort: [a-z] | [year]</p>
+
+<ul>
+  <% @media.each do |medium| %>
+    <li><%= link_to medium.title, medium %> - <%= medium.year %></li>
+  <% end %>
+</ul>
+
+

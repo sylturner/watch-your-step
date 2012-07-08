@@ -1,0 +1,34 @@
+<%= nested_form_for(@medium) do |f| %>
+  <% if @medium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium.errors.count, "error") %> prohibited this medium from being saved:</h2>
+
+      <ul>
+      <% @medium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.text_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <h2>Questions and discussion</h2>
+  <%= f.fields_for :prompts do |g| %>
+    <%= render :partial => "prompt", :locals => {:g => g} %>    
+  <% end %>
+  <p><%= f.link_to_add "Add prompt", :prompts %></p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
