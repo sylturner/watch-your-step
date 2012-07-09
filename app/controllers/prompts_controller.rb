@@ -6,7 +6,7 @@ class PromptsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @prompts }
+      format.json { render :json => @prompts }
     end
   end
 
@@ -17,7 +17,7 @@ class PromptsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @prompt }
+      format.json { render :json => @prompt }
     end
   end
 
@@ -28,7 +28,7 @@ class PromptsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @prompt }
+      format.json { render :json => @prompt }
     end
   end
 
@@ -44,11 +44,11 @@ class PromptsController < ApplicationController
 
     respond_to do |format|
       if @prompt.save
-        format.html { redirect_to @prompt, notice: 'Prompt was successfully created.' }
-        format.json { render json: @prompt, status: :created, location: @prompt }
+        format.html { redirect_to @prompt, :notice => 'Prompt was successfully created.' }
+        format.json { render :json => @prompt, :status => :created, :location => @prompt }
       else
-        format.html { render action: "new" }
-        format.json { render json: @prompt.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @prompt.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -60,11 +60,11 @@ class PromptsController < ApplicationController
 
     respond_to do |format|
       if @prompt.update_attributes(params[:prompt])
-        format.html { redirect_to @prompt, notice: 'Prompt was successfully updated.' }
+        format.html { redirect_to @prompt, :notice => 'Prompt was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @prompt.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @prompt.errors, :status => :unprocessable_entity }
       end
     end
   end

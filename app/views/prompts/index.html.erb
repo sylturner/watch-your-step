@@ -17,7 +17,7 @@
     <td><%= prompt.medium_id %></td>
     <td><%= link_to 'Show', prompt %></td>
     <td><%= link_to 'Edit', edit_prompt_path(prompt) %></td>
-    <td><%= link_to 'Destroy', prompt, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', prompt, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

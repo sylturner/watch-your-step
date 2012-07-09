@@ -9,7 +9,7 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @media }
+      format.json { render :json => @media }
     end
   end
 
@@ -20,7 +20,7 @@ class MediaController < ApplicationController
     @comment = Comment.new(:medium_id => params[:id])
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @medium }
+      format.json { render :json => @medium }
     end
   end
 
@@ -31,7 +31,7 @@ class MediaController < ApplicationController
     @medium.prompts.build
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @medium }
+      format.json { render :json => @medium }
     end
   end
 
@@ -48,11 +48,11 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.save
-        format.html { redirect_to @medium, notice: 'Medium was successfully created.' }
-        format.json { render json: @medium, status: :created, location: @medium }
+        format.html { redirect_to @medium, :notice => 'Medium was successfully created.' }
+        format.json { render :json => @medium, :status => :created, :location => @medium }
       else
-        format.html { render action: "new" }
-        format.json { render json: @medium.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @medium.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,11 +64,11 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.update_attributes(params[:medium])
-        format.html { redirect_to @medium, notice: 'Medium was successfully updated.' }
+        format.html { redirect_to @medium, :notice => 'Medium was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @medium.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @medium.errors, :status => :unprocessable_entity }
       end
     end
   end
