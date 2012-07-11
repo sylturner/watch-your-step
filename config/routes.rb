@@ -1,9 +1,13 @@
 WatchYourStep::Application.routes.draw do
 
   resources :media, :controller => "media" do 
+    get "versions", :on => :member
     resources :prompts
     resources :comments
   end
+
+  get "versions/:id/revert" => "versions#revert", :as => "revert_version"
+  get "versions/:id/view" => "versions#view", :as => "view_version"
 
   root :to => 'home#index'
 

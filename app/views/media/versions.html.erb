@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @medium.title %> Version History</h1>
+  <ul>
+    <li><%= link_to "Current version", medium_path(@medium) %></li>    
+    <% for version in @versions.reverse %>
+      <li><em><%=version.created_at %></em> - <%= version.item_type%> <%=version.event.titleize%> - <%= link_to "Revert", revert_version_path(version) %> - <%= link_to "View", view_version_path(version) %>
+        <% if version.changeset && !version.changeset.empty? %>
+        <br/>
+        <em><%=version.changeset %></em>
+        <% end %>
+
+      </li>
+    <% end %>
+  </ul>

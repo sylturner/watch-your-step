@@ -1,4 +1,6 @@
 class Medium < ActiveRecord::Base
+  has_paper_trail
+  
   attr_accessible :description, :title, :year, :prompts_attributes, :comments_attributes, :images_attributes
   
   has_many :prompts
@@ -7,6 +9,5 @@ class Medium < ActiveRecord::Base
 
   accepts_nested_attributes_for :prompts, :allow_destroy => true
   accepts_nested_attributes_for :comments, :allow_destroy => true
-  accepts_nested_attributes_for :images, :allow_destroy => true
-
+  accepts_nested_attributes_for :images, :allow_destroy => true  
 end

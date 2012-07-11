@@ -1,0 +1,18 @@
+<h1><%= @medium.title %> (<%= @medium.year %>)</h1>
+
+<p>
+  <strong>Description:</strong>
+  <%= @medium.description %>
+</p>
+
+<h2>Observations and Discussion</h2>
+<% for prompt in @medium.prompts %>
+  <h3><%= prompt.question %></h3>
+  <p><%= prompt.answer %></p>
+<% end %>
+
+<% if !@medium.images.empty? %>
+  <% for image in @medium.images %>
+    <%= link_to(image_tag(image.image.url(:medium)), image.image.url) %>
+  <% end %>
+<% end %>

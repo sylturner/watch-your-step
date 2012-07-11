@@ -1,4 +1,5 @@
 class Image < ActiveRecord::Base
+  has_paper_trail
   attr_accessible :medium_id, :image
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   

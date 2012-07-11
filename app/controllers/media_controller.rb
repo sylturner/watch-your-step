@@ -6,7 +6,7 @@ class MediaController < ApplicationController
   # GET /media.json
   def index
     @media = Medium.find(:all, :order => 'title')
-
+    @title = "Listing all media - Watch Your Step"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @media }
@@ -17,6 +17,7 @@ class MediaController < ApplicationController
   # GET /media/1.json
   def show
     @medium = Medium.find(params[:id])
+    @title = "#{@medium.title} - Watch Your Step"
     @comment = Comment.new(:medium_id => params[:id])
     respond_to do |format|
       format.html # show.html.erb
@@ -29,6 +30,7 @@ class MediaController < ApplicationController
   def new
     @medium = Medium.new
     @medium.prompts.build
+    @title = "New Medium - Watch Your Step"
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @medium }
@@ -38,6 +40,7 @@ class MediaController < ApplicationController
   # GET /media/1/edit
   def edit
     @medium = Medium.find(params[:id])
+    @title = "Editing #{@medium.title} - Watch Your Step"
   end
 
   # POST /media
@@ -98,6 +101,25 @@ class MediaController < ApplicationController
     # used to catch spambots
     if !params[:email].blank?
       render :action => "new"
+    end
+  end
+
+  def versions
+    @medium = Medium.find(params[:id])
+    @title = "Versions of #{@medium.title} - Watch Your Step"
+
+    medium_versions = @medium.versions
+    prompts_versions = []
+    @medium.prompts.each {|p| prompts_versions += p.versions}
+
+    images_versions = []
+    @medium.images.each {|i| images_versions += i.versions}
+
+    @versions = medium_versions + prompts_versions + images_versions
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @medium }
     end
   end
 
