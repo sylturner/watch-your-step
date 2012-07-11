@@ -38,7 +38,6 @@ class MediaController < ApplicationController
   # GET /media/1/edit
   def edit
     @medium = Medium.find(params[:id])
-    @medium.prompts.build
   end
 
   # POST /media

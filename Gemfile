@@ -18,6 +18,8 @@ end
 
 gem 'jquery-rails'
 gem "nested_form"
+gem "kaminari"
+gem "paperclip", '~> 2.7'
 
 # this gem can be used for markdown,
 # if we want to add that later.
@@ -26,4 +28,4 @@ group :development do
   gem 'capistrano'
 end
 
-gem "kaminari"
+

@@ -13,7 +13,13 @@
   <p><%= prompt.answer %></p>
 <% end %>
 
-<%= link_to "Edit '#{@medium.title}'", edit_medium_path(@medium) %>
+<% if !@medium.images.empty? %>
+  <% for image in @medium.images %>
+    <%= image_tag image.image.url(:medium) %>
+  <% end %>
+<% end %>
+
+<p><%= link_to "Edit '#{@medium.title}'", edit_medium_path(@medium) %></p>
 
 <hr/>
 

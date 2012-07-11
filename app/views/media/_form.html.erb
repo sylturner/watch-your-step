@@ -1,4 +1,4 @@
-<%= nested_form_for(@medium) do |f| %>
+<%= nested_form_for(@medium, :html => { :multipart => true }) do |f| %>
   <% if @medium.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@medium.errors.count, "error") %> prohibited this medium from being saved:</h2>
@@ -25,8 +25,21 @@
   </div>
   <h2>Questions and discussion</h2>
   <%= f.fields_for :prompts %>
-  <p><%= f.link_to_add "Add question/answer", :prompts %></p>
+  <p><%= f.link_to_add "+ Add question/answer", :prompts %></p>
   
+  <h2>Related Images</h2>
+  <%= f.fields_for :images do |i| %>
+    <p>
+      <% if i.object.image.file? %>
+        <%= image_tag i.object.image.url(:thumb) %><br/>
+      <% end %>
+      <%= i.label :image, "Upload new image:" %>
+      <%= i.file_field :image %><br/>
+      - <%= i.link_to_remove "Remove image" %>
+    </p>
+  <% end %>
+  <p><%= f.link_to_add "+ Add image", :images %></p>
+
   <%= render :partial => "shared/honeypot" %>
   <div class="actions">
     <%= f.submit %>
