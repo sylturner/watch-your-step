@@ -5,7 +5,7 @@ class MediaController < ApplicationController
   # GET /media
   # GET /media.json
   def index
-    @media = Medium.all
+    @media = Medium.find(:all, :order => 'title')
 
     respond_to do |format|
       format.html # index.html.erb
