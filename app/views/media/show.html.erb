@@ -15,7 +15,7 @@
 
 <% if !@medium.images.empty? %>
   <% for image in @medium.images %>
-    <%= image_tag image.image.url(:medium) %>
+    <%= link_to(image_tag(image.image.url(:medium)), image.image.url) %>
   <% end %>
 <% end %>
 
