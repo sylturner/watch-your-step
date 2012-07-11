@@ -2,7 +2,7 @@
 
 <%= render :partial => "medium" %>
 
-<p><%= link_to "Edit '#{@medium.title}'", edit_medium_path(@medium) %> | <%= link_to "Version History", versions_medium_path(@medium) %></p>
+<p><%= link_to "Edit '#{@medium.title}'", edit_medium_path(@medium) %> | <%= link_to "Version History", versions_medium_path(@medium) %> | <em>Last updated <%= time_ago_in_words(@medium.updated_at) %> ago</em></p>
 
 <hr/>
 
