@@ -3,3 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Cancel', media_path %>
+
+<%= link_to 'Delete this medium?', @medium, :confirm => 'Are you sure?', :method => :delete %>
