@@ -23,9 +23,7 @@ gem "kaminari"
 gem "paperclip", '~> 2.7'
 gem "paper_trail"
 
-# this gem can be used for markdown,
-# if we want to add that later.
-# gem "redcarpet"
+gem "redcarpet"
 group :development do 
   gem 'capistrano'
 end

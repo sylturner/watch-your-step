@@ -6,15 +6,19 @@
 
 <hr/>
 
-<h2>Comments</h2>
-<% if @medium.comments.empty? %>
-  <p>No comments yet...</p>
-<% else %>
-  <% for comment in @medium.comments %>
-    <p><strong><%= comment.author %></strong> - <em><%= time_ago_in_words(comment.updated_at) %> ago</em><br/>
-    <%= comment.comment %></p>
+<div id="comments">
+  <h2>Comments</h2>
+  <% if @medium.comments.empty? %>
+    <p>No comments yet...</p>
+  <% else %>
+    <% for comment in @medium.comments %>
+    <div class="comment">
+      <p><strong><%= comment.author %></strong> - <em><%= time_ago_in_words(comment.updated_at) %> ago</em></p>
+      <%= raw markdown.render(comment.comment) %>
+    </div>
+    <% end %>
   <% end %>
-<% end %>
-<%= nested_form_for(@medium) do |f| %>
-  <p><%= f.link_to_add "Add comment", :comments %></p>
-<% end %>
+  <%= nested_form_for(@medium) do |f| %>
+    <p><%= f.link_to_add "Add comment", :comments %></p>
+  <% end %>
+</div>

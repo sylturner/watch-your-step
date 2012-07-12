@@ -1,14 +1,11 @@
 <h1><%= @medium.title %> (<%= @medium.year %>)</h1>
-
-<p>
-  <strong>Description:</strong>
-  <%= @medium.description %>
-</p>
+  
+<%= raw markdown.render(@medium.description) %>
 
 <h2>Observations and Discussion</h2>
 <% for prompt in @medium.prompts %>
   <h3><%= prompt.question %></h3>
-  <p><%= prompt.answer %></p>
+  <%= raw markdown.render(prompt.answer) %>
 <% end %>
 
 <% if !@medium.images.empty? %>
