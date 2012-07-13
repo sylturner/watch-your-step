@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @media = Medium.find(:all, :order => "id desc", :limit => 10).reverse
+    @media = Medium.find(:all, :order => "updated_at desc", :limit => 10)
     @title = "Watch Your Step"
     respond_to do |format|
       format.html # index.html.erb
