@@ -9,6 +9,7 @@ WatchYourStep::Application.routes.draw do
   get "versions/:id/revert" => "versions#revert", :as => "revert_version"
   get "versions/:id/view" => "versions#view", :as => "view_version"
 
+  match '/feed' => 'home#feed', :as => :feed, :defaults => { :format => 'atom' }
   root :to => 'home#index'
 
   # The priority is based upon order of creation:

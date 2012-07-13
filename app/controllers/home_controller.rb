@@ -9,4 +9,11 @@ class HomeController < ApplicationController
     end
   end
 
+  def feed
+    @media = Medium.find(:all, :order => "updated_at desc")
+    respond_to do |format|
+      format.atom
+    end
+  end
+
 end
